@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你的抽象网页宠物</title>
+	<script src="pet.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <link rel="stylesheet" href="pet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="pet-container" id="pet-container">
+            <canvas id="pet-canvas"></canvas>
+            <div class="effect-container" id="effect-container"></div>
+            <div class="thought-bubble" id="thought-bubble"></div>
+            <div class="controls">
+                <button class="control-btn" id="pet-btn"><i class="fas fa-heart"></i> <span>抚摸</span></button>
+                <button class="control-btn" id="feed-btn"><i class="fas fa-utensils"></i> <span>喂食</span></button>
+                <button class="control-btn" id="play-btn"><i class="fas fa-gamepad"></i> <span>玩耍</span></button>
+                <button class="control-btn" id="clean-btn"><i class="fas fa-shower"></i> <span>清洁</span></button>
+                <button class="control-btn" id="sleep-btn"><i class="fas fa-moon"></i> <span>睡觉</span></button>
+            </div>
+            <div class="animal-selector">
+                <button class="animal-btn active" id="dog-btn" style="background-color: #FFB6C1;">🐶</button>
+                <button class="animal-btn" id="cat-btn" style="background-color: #DDA0DD;">🐱</button>
+                <button class="animal-btn" id="rabbit-btn" style="background-color: #E6E6FA;">🐰</button>
+                <button class="animal-btn" id="bird-btn" style="background-color: #ADD8E6;">🐦</button>
+                <button class="animal-btn" id="bear-btn" style="background-color: #F0E68C;">🐻</button>
+                <button class="animal-btn" id="hamster-btn" style="background-color: #F5DEB3;">🐹</button>
+            </div>
+        </div>
+        <div class="chat-container" id="chat-container">
+            <h2 class="chat-header">和你的<span id="current-pet-name">小狗</span>聊天吧！</h2>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message pet-message">你好呀！我是你的小狗，最喜欢和你一起玩啦！(๑˘ᴗ˘๑)</div>
+            </div>
+            <div class="sleeping-notice" id="sleeping-notice" style="display: none;">此动物正在睡觉，请取消睡觉后聊天</div>
+            <div class="chat-input">
+                <input type="text" id="message-input" placeholder="输入你想说的话...">
+                <button id="send-button"><i class="fas fa-paper-plane"></i> 发送</button>
+            </div>
+            <div class="loading" id="loading">思考中...</div>
+        </div>
+	<div class="custom-alert" id="customAlert">
+	    <div class="alert-content">
+	        <p id="alertMessage"></p>
+	        <button class="alert-close" onclick="document.getElementById('customAlert').style.display='none'">确定</button>
+	    </div>
+	</div>
+    </div>
+                       </body>
+                       </html>

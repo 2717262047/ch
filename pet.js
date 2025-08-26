@@ -1514,9 +1514,9 @@ function getAIResponseForWakeUp() {
             body: JSON.stringify({
                 model: "Qwen/Qwen3-8B",
                 messages: messages,
-                max_tokens: 4096,
+                max_tokens: 117760,
                 enable_thinking: false,
-                thinking_budget: 4096,
+                thinking_budget: 32768,
                 min_p: 0.05,
                 temperature: 0.7,
                 top_p: 0.7,
@@ -1616,7 +1616,7 @@ function performInteraction(action) {
                 body: JSON.stringify({
                     model: "Qwen/Qwen3-8B",
                     messages: messages,
-                    max_tokens: 4096,
+                    max_tokens: 117760,
                     enable_thinking: false,
                     temperature: 0.7,
                     stream: true // 启用流式输出
@@ -1671,7 +1671,7 @@ function performInteraction(action) {
             body: JSON.stringify({
                 model: "Qwen/Qwen3-8B",
                 messages: messages,
-                max_tokens: 4096,
+                max_tokens: 117760,
                 enable_thinking: false,
                 temperature: 0.7,
                 stream: true // 启用流式输出
@@ -1751,7 +1751,7 @@ function performInteraction(action) {
                 body: JSON.stringify({
                     model: "Qwen/Qwen3-8B",
                     messages: messages,
-                    max_tokens: 4096,
+                    max_tokens: 117760,
                     enable_thinking: false,
                     temperature: 0.7,
                     stream: true // 启用流式输出
@@ -1842,9 +1842,9 @@ function getAIResponseForInteraction(interactionDescription) {
             body: JSON.stringify({
                 model: "Qwen/Qwen3-8B",
                 messages: messages,
-                max_tokens: 4096,
+                max_tokens: 117760,
                 enable_thinking: false,
-                thinking_budget: 4096,
+                thinking_budget: 32768,
                 min_p: 0.05,
                 temperature: 0.7,
                 top_p: 0.7,
@@ -2088,9 +2088,9 @@ async function chatWithPet(message) {
             body: JSON.stringify({
                 model: "Qwen/Qwen3-8B",
                 messages: messages,
-                max_tokens: 4096,
+                max_tokens: 117760,
                 enable_thinking: false,
-                thinking_budget: 4096,
+                thinking_budget: 32768,
                 min_p: 0.05,
                 temperature: 0.7,
                 top_p: 0.7,

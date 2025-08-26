@@ -1470,6 +1470,7 @@ function performInteraction(action) {
     petMemory.animationState = 'sleeping';
     petMemory.isSleeping = true;
     updateSleepStateUI();
+    addEffect('sleeping');
     
     // 调用AI生成睡觉回应
     const personality = petPersonalities[currentPetType].personality;

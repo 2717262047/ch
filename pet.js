@@ -389,6 +389,7 @@ function createDog() {
     backRightLeg.position.set(0.3, -0.6, -0.4);
     group.add(backRightLeg);
 
+
     // 尾巴
     const tail = new THREE.Mesh(
         new THREE.ConeGeometry(0.12, 1.0, 32),
@@ -1370,11 +1371,13 @@ function handleStreamingResponse(response, petMemory, userMessage, isWakeUp = fa
 
     // 存储当前消息元素的引用，用于后续更新
     const currentMessageElement = messageElement;
+    const loadingElement = document.getElementById('loading');
 
     // 读取流的函数
     function readStream() {
         // 如果已经停止流式输出，直接返回
         if (!isStreaming) {
+            loadingElement.style.display = 'none';
             return;
         }
 
@@ -1383,6 +1386,9 @@ function handleStreamingResponse(response, petMemory, userMessage, isWakeUp = fa
                 // 流结束，更新状态
                 isStreaming = false;
                 currentMessageElement.classList.remove('streaming');
+
+                // 确保隐藏加载状态
+                loadingElement.style.display = 'none';
 
                 // 保存完整对话到记忆
                 if (isWakeUp) {
@@ -1399,9 +1405,6 @@ function handleStreamingResponse(response, petMemory, userMessage, isWakeUp = fa
 
                 // 管理对话历史
                 petMemory.conversation = manageConversationHistory(petMemory.conversation);
-
-                // 隐藏加载状态
-                document.getElementById('loading').style.display = 'none';
 
                 // 宠物回复完成后的动画
                 if (currentPet && petMemory.animationState !== 'sleeping') {
@@ -1452,7 +1455,7 @@ function handleStreamingResponse(response, petMemory, userMessage, isWakeUp = fa
             console.error('流式响应错误:', error);
             isStreaming = false;
             currentMessageElement.classList.remove('streaming');
-            document.getElementById('loading').style.display = 'none';
+            loadingElement.style.display = 'none';
 
             // 显示错误消息
             if (currentMessageElement.textContent === '') {
@@ -1474,6 +1477,8 @@ function cancelStreaming() {
         });
         streamingResponse = null;
     }
+    // 确保隐藏加载状态
+    document.getElementById('loading').style.display = 'none';
 }
 
 // 获取AI生成的清醒回复（流式）
@@ -1772,6 +1777,7 @@ function performInteraction(action) {
                 .catch(error => {
                     console.error('Error:', error);
                     addMessage('嗯？什么事呀？(半梦半醒中)', 'pet');
+                    loadingElement.style.display = 'none';
                     // 即使出错，仍继续处理当前动作
                     getAIResponseForInteraction(actionDescriptions[action]);
                 });
